@@ -37,10 +37,8 @@ export class AuthController {
   }
 
   @Post('/login')
-  // Validate the request body.
   @ValidateBody(credentialsSchema)
   async login(ctx: Context) {
-    console.log('you hit login');
     const user = await getRepository(User).findOne({ email: ctx.request.body.email });
 
     if (!user) {
@@ -51,10 +49,8 @@ export class AuthController {
       return new HttpResponseUnauthorized();
     }
 
-    // Create a session associated with the user.
     const session = await this.store.createAndSaveSessionFromUser(user);
 
-    // Redirect the user to the home page on success.
     return new HttpResponseOK({
       token: session.getToken()
     });

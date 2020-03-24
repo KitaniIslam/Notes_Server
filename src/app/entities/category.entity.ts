@@ -13,5 +13,4 @@ export class Category {
   @OneToMany(type => Note, note => note.category)
   note: Note[]
 
-
 }

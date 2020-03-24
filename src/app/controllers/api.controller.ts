@@ -12,6 +12,7 @@ export class ApiController {
     if(!notes){
       return new HttpResponseNotFound();
     }
+    // TODO: join notes and category tables and return them
     return new HttpResponseOK(notes.email);
   }
 
