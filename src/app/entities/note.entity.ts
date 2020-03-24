@@ -12,7 +12,6 @@ export class Note {
   @Column()
   note: string;
 
-  // set relation
   @ManyToOne(type => User , user => user.notes )
   user: User;
 
