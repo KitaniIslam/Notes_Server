@@ -1,7 +1,7 @@
 // 3p
 import {
-  Context, dependency, HttpResponseNoContent, Post,
-  Session, TokenRequired, ValidateBody, verifyPassword , HttpResponseOK , HttpResponseUnauthorized , hashPassword
+  Context, dependency, Post,Get,
+  Session, TokenRequired, ValidateBody, verifyPassword , HttpResponseOK , HttpResponseUnauthorized , hashPassword, HttpResponseNotFound
 } from '@foal/core';
 import { TypeORMStore } from '@foal/typeorm';
 import { getRepository } from 'typeorm';
@@ -60,6 +60,24 @@ export class AuthController {
   @TokenRequired({ store: TypeORMStore, extendLifeTimeOrUpdate: false })
   async logout(ctx: Context<any, Session>) {
     await this.store.destroy(ctx.session.sessionID);
-    return new HttpResponseNoContent();
+    return new HttpResponseOK();
+  }
+
+  @Get('/user')
+  @TokenRequired({ store: TypeORMStore, extendLifeTimeOrUpdate: false })
+  async user(ctx: Context){
+
+    const user = await getRepository(User).findOne(ctx.user,{
+      relations: ['notes', 'notes.category']
+    });
+
+    if(!user){
+      return new HttpResponseNotFound();
+    }
+    return new HttpResponseOK({
+      id: user.id,
+      email: user.email,
+      notes: user.notes
+    });
   }
 }
