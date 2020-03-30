@@ -19,20 +19,14 @@ const bodySchema = {
 export class ApiController {
 
   @Get('/notes')
-  @ValidateParams({ properties: { email: { type: 'string',format : 'email' } }, type: 'object' })
   async notes(ctx: Context) {
     console.log(ctx.request.query);
-    const user = await getRepository(User)
-    .findOne({email: ctx.request.query.email},{
-      relations:['notes','notes.category']
-    });
-    if(!user){
+    const notes = await getRepository(Note).find({user: ctx.user});
+
+    if(!notes){
       return new HttpResponseBadRequest();
     }
-    return new HttpResponseOK({
-      user:user.email,
-      notes:user.notes
-    });
+    return new HttpResponseOK({notes:notes});
   }
 
   @Post('/note')
