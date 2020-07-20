@@ -37,6 +37,11 @@
     pump "~3.0.0"
     reflect-metadata "~0.1.13"
 
+"@foal/password@^1.6.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@foal/password/-/password-1.9.0.tgz#7c9f168bd316d5ac3ccc409633e70dcc8f19b350"
+  integrity sha512-OI/ZQ+y3jp7rkWhrOUAfBz2j9aG2QK/JDl3WyCOqye3e0W14l/63uWei3eBd4LvvuzQeSTDWBsPBpqf0x2f3Bg==
+
 "@foal/typeorm@^1.0.0":
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/@foal/typeorm/-/typeorm-1.6.0.tgz#080b0730893551dda6831bb7ff36ac3120f29df5"
@@ -1743,9 +1748,9 @@ locate-path@^5.0.0:
     p-locate "^4.1.0"
 
 lodash@^4.17.14, lodash@^4.17.15, lodash@^4.5.1:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
+  integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
 
 log-ok@^0.1.1:
   version "0.1.1"
